@@ -1,4 +1,4 @@
-.PHONY: help build run stop restart logs status compose-up compose-down dev-install dev test clean
+.PHONY: help build run stop restart logs status compose-up compose-down dev-install dev test hf-upload clean
 
 APP_NAME = yolo26-vietnamese-money
 CONTAINER_NAME = yolo26-money-app
@@ -19,6 +19,7 @@ help:
 	@echo "  make dev-install   : Install Python dependencies locally"
 	@echo "  make dev           : Run local FastAPI dev server (port $(PORT))"
 	@echo "  make test          : Run prediction smoke test"
+	@echo "  make hf-upload     : Upload weights to Hugging Face Model Hub"
 	@echo "  make clean         : Remove temporary caches and runs"
 	@echo "=========================================================="
 
@@ -68,6 +69,9 @@ dev:
 
 test:
 	python3 tests/test_detector.py
+
+hf-upload:
+	python3 scripts/upload_to_hf.py
 
 clean:
 	rm -rf __pycache__ app/__pycache__ .pytest_cache runs/
