@@ -1,0 +1,12 @@
+.git
+.gitignore
+.github
+notebooks/
+datasets/
+runs/
+__pycache__
+*.pyc
+.venv
+venv
+*.md
+!models/README.md

@@ -1,0 +1,15 @@
+services:
+  yolo26-money-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: yolo26-vietnamese-money:latest
+    container_name: yolo26-money-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount models folder so you can drop in best.pt without rebuilding the image
+      - ./models:/app/models
+    environment:
+      - YOLO_CONFIG_DIR=/tmp/Ultralytics

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Training & datasets
+datasets/
+runs/
+*.log
+
+# Temporary & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large checkpoints (optional, user can download into models/)
+models/best_*.pt
+*.zip
+*.tar.gz
