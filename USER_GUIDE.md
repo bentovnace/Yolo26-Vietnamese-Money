@@ -43,15 +43,16 @@ cd Yolo26-Vietnamese-Money
 ### Bước 2: Khởi chạy ứng dụng
 Bạn có thể chọn **1 trong 2 cách** sau:
 
-#### ▶️ Cách 2.1: Chạy bằng Python (Khuyên dùng - Nhanh nhất, mất 1 giây)
+#### ▶️ Cách 2.1: Chạy bằng Python (Khuyên dùng - Nhanh nhất, kết nối Render)
 ```bash
 # 1. Cài thư viện
 pip install -r requirements.txt
 
-# 2. Khởi chạy Web Server
+# 2. Khởi chạy Web Server Dev
 make dev
 ```
 Sau đó mở trình duyệt vào: **`http://localhost:8000`**
+> 💡 **Tính năng nổi bật:** Giao diện Web có sẵn thanh chọn **Backend: Local Server** hoặc **Render Cloud**. Khi chạy `make dev`, bạn có thể test suy luận trực tiếp trên máy của mình hoặc chuyển sang kết nối trực tiếp đến cụm Cloud Render `https://yolo26-vietnamese-money.onrender.com` chỉ bằng một cú nhấp chuột!
 
 #### ▶️ Cách 2.2: Chạy bằng Docker (Nếu máy đã cài Docker)
 ```bash
