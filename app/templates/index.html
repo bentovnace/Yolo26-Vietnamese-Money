@@ -37,17 +37,14 @@
 
       <!-- Model Status & Render Cloud Connection -->
       <div class="flex items-center space-x-3">
-        <!-- Backend Selector for Dev & Cloud -->
-        <div class="flex items-center space-x-2 bg-slate-900/90 border border-slate-700/70 rounded-full px-3 py-1.5 text-xs shadow-inner">
-          <i class="ph-bold ph-globe-hemisphere-east text-emerald-400"></i>
-          <span class="text-slate-400 hidden sm:inline">Backend:</span>
-          <select id="api-target-select" class="bg-transparent text-emerald-300 font-medium focus:outline-none cursor-pointer">
-            <option value="" class="bg-slate-900 text-slate-100">🏠 Local Server</option>
-            <option value="https://yolo26-vietnamese-money.onrender.com" class="bg-slate-900 text-slate-100">☁️ Render Cloud</option>
-          </select>
-          <span id="render-live-indicator" class="flex items-center gap-1 text-[11px] text-emerald-400 font-semibold pl-1" title="Kết nối trực tiếp tới Render Cloud">
+        <!-- Dedicated Render Cloud Connection Badge -->
+        <div class="flex items-center space-x-2 bg-slate-900/90 border border-emerald-500/40 rounded-full px-3.5 py-1.5 text-xs shadow-inner">
+          <i class="ph-bold ph-cloud text-emerald-400"></i>
+          <span class="text-slate-400">Backend:</span>
+          <span class="text-emerald-300 font-semibold">Render Cloud</span>
+          <span id="render-live-indicator" class="flex items-center gap-1.5 text-[11px] text-emerald-400 font-bold pl-1" title="Kết nối trực tiếp tới Render Cloud">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="hidden md:inline">Render Live</span>
+            <span>Online</span>
           </span>
         </div>
 
@@ -373,9 +370,9 @@
       const conf = confSlider.value;
       const iou = iouSlider.value;
 
-      const apiTarget = document.getElementById('api-target-select') ? document.getElementById('api-target-select').value : '';
-      const predictUrl = `${apiTarget}/api/v1/predict?conf=${conf}&iou=${iou}`;
-      const visUrl = `${apiTarget}/api/v1/predict/visualize?conf=${conf}&iou=${iou}`;
+      const RENDER_CLOUD_URL = "https://yolo26-vietnamese-money.onrender.com";
+      const predictUrl = `${RENDER_CLOUD_URL}/api/v1/predict?conf=${conf}&iou=${iou}`;
+      const visUrl = `${RENDER_CLOUD_URL}/api/v1/predict/visualize?conf=${conf}&iou=${iou}`;
 
       try {
         // Fetch JSON analysis & visualized image in parallel (Local or Render Cloud)

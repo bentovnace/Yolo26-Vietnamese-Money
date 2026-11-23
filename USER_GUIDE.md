@@ -52,7 +52,7 @@ pip install -r requirements.txt
 make dev
 ```
 Sau đó mở trình duyệt vào: **`http://localhost:8000`**
-> 💡 **Tính năng nổi bật:** Giao diện Web có sẵn thanh chọn **Backend: Local Server** hoặc **Render Cloud**. Khi chạy `make dev`, bạn có thể test suy luận trực tiếp trên máy của mình hoặc chuyển sang kết nối trực tiếp đến cụm Cloud Render `https://yolo26-vietnamese-money.onrender.com` chỉ bằng một cú nhấp chuột!
+> 💡 **Tính năng Cloud-Only:** Khi chạy `make dev`, toàn bộ quá trình nhận diện và tính tổng tiền được chuyển tiếp 100% lên máy chủ Render Cloud `https://yolo26-vietnamese-money.onrender.com`. Máy cục bộ chỉ chạy giao diện điều khiển siêu nhẹ, không tiêu tốn RAM hay GPU của máy bạn!
 
 #### ▶️ Cách 2.2: Chạy bằng Docker (Nếu máy đã cài Docker)
 ```bash

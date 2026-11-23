@@ -72,15 +72,15 @@ dev-install:
 
 dev:
 	@echo "=========================================================="
-	@echo "🚀 Starting YOLO26 Dev Server & Connecting to Render Cloud"
+	@echo "🚀 Starting YOLO26 Dev Client (Cloud-Only -> Render)"
 	@echo "=========================================================="
 	@echo "🏠 Local Web UI:    http://localhost:$(PORT)"
 	@echo "☁️ Render Cloud:    $(RENDER_URL)"
-	@echo "📖 Local API Docs:  http://localhost:$(PORT)/docs"
 	@echo "📖 Render API Docs: $(RENDER_URL)/docs"
-	@echo "💡 Giao diện Web hỗ trợ chọn Backend: Local hoặc Render!"
+	@echo "⚡ Chế độ Cloud-Only: Toàn bộ suy luận chạy trên Render Cloud!"
+	@echo "💡 Không tốn RAM / GPU máy cục bộ."
 	@echo "=========================================================="
-	uvicorn app.main:app --host 0.0.0.0 --port $(PORT) --reload
+	RENDER_ONLY=1 uvicorn app.main:app --host 0.0.0.0 --port $(PORT) --reload
 
 test:
 	python3 tests/test_detector.py
