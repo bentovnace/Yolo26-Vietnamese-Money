@@ -40,9 +40,9 @@ detector = MoneyDetector()
 async def home(request: Request):
     """Render interactive Web UI."""
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request": request,
+        request=request,
+        name="index.html",
+        context={
             "model_path": str(detector.model_path.name),
             "is_custom_model": detector.is_custom_model
         }
