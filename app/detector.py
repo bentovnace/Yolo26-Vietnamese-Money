@@ -210,10 +210,11 @@ class MoneyDetector:
                 cv2.LINE_AA,
             )
 
-        # Top summary overlay banner
+        # Top summary overlay banner (use ASCII VND for cv2.putText compatibility)
         total_str = predict_result.get("total_amount_formatted", "0 VNĐ")
+        ascii_total = total_str.replace("VNĐ", "VND").replace("đ", "d")
         notes_count = predict_result.get("total_notes", 0)
-        banner_text = f"Tong cong: {total_str} | So to: {notes_count}"
+        banner_text = f"Tong: {ascii_total} | So to: {notes_count}"
 
         header_h = 44
         overlay = image.copy()
