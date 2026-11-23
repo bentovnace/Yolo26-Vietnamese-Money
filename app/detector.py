@@ -122,7 +122,9 @@ class MoneyDetector:
                 xyxy = [int(v) for v in box.xyxy[0].tolist()]
 
                 # Calculate currency value if class matches denomination
-                clean_cls = cls_name.replace("k", "000").replace("K", "000").strip()
+                clean_cls = cls_name.strip()
+                if clean_cls.lower().endswith("k") and clean_cls[:-1].isdigit():
+                    clean_cls = f"{clean_cls[:-1]}000"
                 amount_value = DENOMINATION_VALUES.get(clean_cls, 0)
 
                 if amount_value > 0:
