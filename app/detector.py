@@ -54,7 +54,12 @@ class MoneyDetector:
         self.model_path = self._resolve_model_path(model_path)
         print(f"[*] Loading YOLO26 model from: {self.model_path}")
         self.model = YOLO(str(self.model_path))
-        self.is_custom_model = "best.pt" in str(self.model_path)
+        
+        # Determine if model was trained on Vietnamese currency
+        if hasattr(self.model, "names") and isinstance(self.model.names, dict):
+            self.is_custom_model = any(k in self.model.names.values() for k in ["1000", "5000", "500000"])
+        else:
+            self.is_custom_model = "best.pt" in str(self.model_path)
         print(f"[*] Model loaded successfully. Is custom trained money model: {self.is_custom_model}")
 
     def _resolve_model_path(self, model_path: Optional[str]) -> Path:
@@ -65,6 +70,11 @@ class MoneyDetector:
         custom_weights = base_dir / "models" / "best.pt"
         if custom_weights.exists():
             return custom_weights
+
+        # Check alternative folder if user placed unzipped weights there
+        alt_weights = base_dir / "yolo26_vietnamese_money_weights" / "best.pt"
+        if alt_weights.exists():
+            return alt_weights
 
         base_weights = base_dir / "models" / "yolo26n.pt"
         if base_weights.exists():
@@ -103,6 +113,7 @@ class MoneyDetector:
             conf=conf_threshold,
             iou=iou_threshold,
             imgsz=imgsz,
+            agnostic_nms=True,
             verbose=False
         )
 

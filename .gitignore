@@ -28,3 +28,6 @@ Thumbs.db
 models/best_*.pt
 *.zip
 *.tar.gz
+/*.jpg
+/*.png
+yolo26_vietnamese_money_weights/
